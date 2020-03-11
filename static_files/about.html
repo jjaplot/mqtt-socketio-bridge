@@ -82,11 +82,15 @@
 
          source.addEventListener('message', function(e) {
          document.getElementById('data').innerHTML = e.data
+         config.data.datasets[0].data.push(e.data);
+         lineChart.update();
          }, false)
 
          source.addEventListener('open', function(e) {
          document.getElementById('state').innerHTML = "Connected"
          }, false)
+        
+    
 
     });
 </script>
