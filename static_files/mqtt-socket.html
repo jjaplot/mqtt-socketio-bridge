@@ -35,11 +35,21 @@
         </script>
 
         <script>
-        function submqtt() {
+        function submqtt() 
+            {
             var inputVal = document.getElementById("subs_topic").value;
             document.getElementById('mymqtt').innerHTML = inputVal;
+            }
+        </script>
+
+        <script>
+        function submqtt2(prinDt) 
+        {
+        
+        document.getElementById('mymqtt').innerHTML = prinDt;
         }
         </script>
+        
 
         <script src="https://bernii.github.io/gauge.js/dist/gauge.min.js"></script>
         
@@ -107,6 +117,7 @@
                     config.data.labels.push('this');
                     config.data.datasets[0].data.push(pdata);
                     lineChart.update();
+                    submqtt(msg.payload)
             
             })
 
