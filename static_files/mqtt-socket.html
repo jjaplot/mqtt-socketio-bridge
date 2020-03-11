@@ -32,6 +32,12 @@
                            $('#messages').prepend("<li>["+msg.topic+"] "+msg.payload+"</li>")
                    })
         </script>
+
+        <script>
+        function submqtt() {
+            document.getElementById('mymqtt').innerHTML = '#subs_topic';
+        }
+        </script>
     </head>
 
     <body class="sb-nav-fixed">
@@ -55,22 +61,7 @@
                             >
                             <div class="sb-sidenav-menu-heading">Interface</div>
                             
-                            <form id='subscribe' method='post'>
-                                <label for="subs_topic"></label>
-
-                                <div class="input-group">
-                                    <input class="form-control" name="subs_topic" id="subs_topic" type="text" />
-  
-                                     <div class="input-group-append">
-                                     <button class="btn btn-primary" type="button" onclick="$('#subs_status').text('Working...').show(); socket.emit('subscribe', { 'topic': $('#subs_topic')[0].value }); $('#subs_status').text('Ok').fadeOut(2000); return false;" ><i class="fas fa-bars"></i></button>
-                                     </div>   
-                                
-                                </div>
-
-                                <span id="subs_status"></span>
                            
-                            </form>
-
                             <section>
                                 <h2>Messages Received</h2>
                                 <p>Once you have subscribed to at least one topic, any messages received will be shown below in the form <code>[topic name] payload</code>.
@@ -144,7 +135,9 @@
 
                     <div class="sb-sidenav-footer">
                         <div class="small">Logged in as:</div>
-                        Start Bootstrap
+                        <label id = "mymqtt"> 
+                            Welcome to GeeksforGeeks 
+                        </label>
                     </div>
                 </nav>
             </div>
