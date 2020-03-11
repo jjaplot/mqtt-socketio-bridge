@@ -49,18 +49,27 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="index.html"
+                            <a class="nav-link" href="test.html"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard</a
                             >
                             <div class="sb-sidenav-menu-heading">Interface</div>
                             
                             <form id='subscribe' method='post'>
-                                <label for="subs_topic">Topic</label>
-                                <input name="subs_topic" id="subs_topic" type="text" />
-                                <input name="subscribe" type="submit" value="subscribe" onclick="$('#subs_status').text('Working...').show(); socket.emit('subscribe', { 'topic': $('#subs_topic')[0].value }); $('#subs_status').text('Ok').fadeOut(2000); return false;" />
-                                <button class="btn btn-link btn-sm order-1 order-lg-0" id="subscribe2" href="#" onclick="$('#subs_status').text('Working...').show(); socket.emit('subscribe', { 'topic': $('#subs_topic')[0].value }); $('#subs_status').text('Ok').fadeOut(2000); return false;"><i class="fas fa-bars"></i></button>
+                                <label for="subs_topic"></label>
+
+                                <div class="input-group">
+                                    <input class="form-control" name="subs_topic" id="subs_topic" type="text" />
+  
+                                     <div class="input-group-append">
+                                     <button class="btn btn-primary" type="button"><i class="fas fa-bars"></i></button>
+                                     </div>   
+                                    <input  class="button" name="subscribe" type="submit" value="subscribe" onclick="$('#subs_status').text('Working...').show(); socket.emit('subscribe', { 'topic': $('#subs_topic')[0].value }); $('#subs_status').text('Ok').fadeOut(2000); return false;" /> 
+                                
+                                </div>
+
                                 <span id="subs_status"></span>
+                           
                             </form>
 
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts"
@@ -69,6 +78,16 @@
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
                             ></a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                                <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-1 my-1 my-md-0">
+                                    <div class="input-group">
+                                        <input class="form-control" type="text" placeholder="Topic" aria-label="Search" aria-describedby="basic-addon2" />
+                                        <div class="input-group-append">
+                            
+                                            <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
+                               
                                 <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="layout-static.html">Static Navigation</a><a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a></nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages"
