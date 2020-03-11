@@ -90,22 +90,27 @@ io.sockets.on('connection', function(sock) {
 
 })
 
+// Serve static files from the 'static_files' folder
+app.use(express.static('static_files'))
+
+
 router.use(function (req,res,next) {
   console.log("/" + req.method)
   next()
 })
 
-router.get("/about",function(req,res){
-  res.sendFile(path + "about.html");
-})
 
-// Serve static files from the 'static_files' folder
-app.use(express.static('static_files'))
+
 
 // Set up web server to serve 
 app.get('/', function(req, res) {
         res.sendFile(__dirname+"/static_files/mqtt-socket.html")
 })
+
+app.get("/about",function(req,res){
+  res.sendFile(__dirname+"/static_files/about.html")
+})
+
 
 http.listen(port, function() {
         console.log("listening on "+port)
