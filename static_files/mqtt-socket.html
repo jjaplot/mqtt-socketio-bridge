@@ -90,7 +90,9 @@
                            //submqtt()
                            
                            datpe = typeof(msg.payload)
-                           submqtt2(datpe)
+                           pressure = parseInt(msg.payload)
+                           submqtt2(pressure)
+                           
                            if (config.data.labels.length === 20) {
                             config.data.labels.shift();
                             config.data.datasets[0].data.shift();
