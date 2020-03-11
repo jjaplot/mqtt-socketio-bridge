@@ -20,6 +20,5 @@
     "express": "^4.15.2",
     "mqtt": "^2.18.8",
     "socket.io": "^2.2.0"
-    "gauge.js":"latest"
   }
 }
