@@ -88,14 +88,15 @@
                            // For this example page, we'll just push the new message
                            // to the top of a simple list
                            //submqtt()
-                           submqtt2(msg.payload)
-                           pressure = parseInt(msg.payload)
+                           
+                           datpe = typeof(msg.payload)
+                           submqtt2(datpe)
                            if (config.data.labels.length === 20) {
                             config.data.labels.shift();
                             config.data.datasets[0].data.shift();
                             }
                             config.data.labels.push('this');
-                            config.data.datasets[0].data.push(presure);
+                            config.data.datasets[0].data.push(10);
                             lineChart.update();
                            
                            $('#messages').prepend("<li>["+msg.topic+"] "+msg.payload+"</li>")
