@@ -6,32 +6,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" rel="stylesheet">
     </script>
-      if (!!window.EventSource) {
-    var source = new EventSource('/countdown')
-
-    source.addEventListener('message', function(e) {
-      document.getElementById('data').innerHTML = e.data
-    }, false)
-
-    source.addEventListener('open', function(e) {
-      document.getElementById('state').innerHTML = "Connected"
-    }, false)
-
-    source.addEventListener('error', function(e) {
-      const id_state = document.getElementById('state')
-      if (e.eventPhase == EventSource.CLOSED)
-        source.close()
-      if (e.target.readyState == EventSource.CLOSED) {
-        id_state.innerHTML = "Disconnected"
-      }
-      else if (e.target.readyState == EventSource.CONNECTING) {
-        id_state.innerHTML = "Connecting..."
-      }
-    }, false)
-  } else {
-    console.log("Your browser doesn't support SSE")
-  }
-  </script>
   <script src="stream.js"></script>
 </head>
 <body>
@@ -104,8 +78,16 @@
 
         const lineChart = new Chart(context, config);
 
-        
-        }
+        var source = new EventSource('/countdown')
+
+         source.addEventListener('message', function(e) {
+         document.getElementById('data').innerHTML = e.data
+         }, false)
+
+         source.addEventListener('open', function(e) {
+         document.getElementById('state').innerHTML = "Connected"
+         }, false)
+
     });
 </script>
 <h1>SSE: <span id="state"></span></h1>
