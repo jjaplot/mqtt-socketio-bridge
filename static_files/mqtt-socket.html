@@ -22,6 +22,17 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
 
         <script>
+
+
+             // Bring up a socket.io connection
+             var socket = io.connect()
+                   socket.on('connect', function() {
+                           // Subscribe to the topic(s) we're interested in
+                           // Uncomment this line if you want to automatically subscribe to a topic
+                           //socket.emit('subscribe', { 'topic': 'mcqn/#' })
+                   })
+            
+
             $(document).ready(function () {
                 const config = {
                     type: 'line',
@@ -72,19 +83,23 @@
         
                 const lineChart = new Chart(context, config);
 
-                var source = new EventSource('/countdown')
+                       // Set up callback for whenever an MQTT message arrives
+                socket.on('mqtt', function(msg) {
+                           console.log("message: ["+msg.topic+"] >>"+msg.payload+"<<")
+                           // For this example page, we'll just push the new message
+                           // to the top of a simple list
+                           //submqtt()
+                           submqtt2(msg.payload)
+                           
+                           $('#messages').prepend("<li>["+msg.topic+"] "+msg.payload+"</li>")
+                           
+                })
 
-                source.addEventListener('message', function(e) {
-                 document.getElementById('data').innerHTML = e.data
-                }, false)
+
 
                 
             });
-        </script>
-   
-       
-
-        <script>
+ 
         function submqtt() 
             {
             var inputVal = document.getElementById("subs_topic").value;
