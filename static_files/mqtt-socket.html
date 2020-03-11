@@ -15,6 +15,68 @@
         <!-- Include jQuery, just used here for some of the DOM manipulation and
                 AJAX calls.  Not *required* for the MQTT-SocketIO bridge itself -->
         <script src="/jquery-3.3.1.min.js"></script>
+
+        <script>
+            $(document).ready(function () {
+                const config = {
+                    type: 'line',
+                    data: {
+                        labels: [],
+                        datasets: [{
+                            label: "Random Dataset",
+                            backgroundColor: 'rgb(255, 99, 132)',
+                            borderColor: 'rgb(255, 99, 132)',
+                            data: [],
+                            fill: false,
+                        }],
+                    },
+                    options: {
+                        responsive: true,
+                        title: {
+                            display: true,
+                            text: 'Creating Real-Time Charts with Flask'
+                        },
+                        tooltips: {
+                            mode: 'index',
+                            intersect: false,
+                        },
+                        hover: {
+                            mode: 'nearest',
+                            intersect: true
+                        },
+                        scales: {
+                            xAxes: [{
+                                display: true,
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Time'
+                                }
+                            }],
+                            yAxes: [{
+                                display: true,
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Value'
+                                }
+                            }]
+                        }
+                    }
+                };
+        
+                const context = document.getElementById('myLineChart').getContext('2d');
+        
+                const lineChart = new Chart(context, config);
+        
+                var source = new EventSource('/countdown')
+
+                source.addEventListener('message', function(e) {
+                document.getElementById('data').innerHTML = e.data
+
+                }, false)
+        
+                
+            });
+        </script>
    
        
 
@@ -162,6 +224,7 @@
                         <label id = "mymqtt"> 
                             Welcome to GeeksforGeeks 
                         </label>
+                        <h3>Data: <span id="data"></span></h3>
                     </div>
                 </nav>
             </div>
