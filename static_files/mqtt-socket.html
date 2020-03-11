@@ -105,21 +105,23 @@
 
             const lineChart = new Chart(context, config);
 
-            socket1.on('mqtt', function(msg) {
-                           console.log("message: ["+msg.topic+"] >>"+msg.payload+"<<")
-                           // For this example page, we'll just push the new message
-                           // to the top of a simple list
-                           if (config.data.labels.length === 20) {
-                            config.data.labels.shift();
-                            config.data.datasets[0].data.shift();
-                            }
+            for(var start = 1; start < 10; start++) {
+            setTimeout(function () {
+                if (config.data.labels.length === 20) {
+                    config.data.labels.shift();
+                    config.data.datasets[0].data.shift();
+                    }
                     pdata = parseInt(msg.payload)
                     config.data.labels.push('this');
                     config.data.datasets[0].data.push(pdata);
                     lineChart.update();
                     submqtt(msg.payload)
+            }, 3000);
+            }
+                           
+                    
             
-            })
+            
 
              });
         </script>
