@@ -38,7 +38,6 @@
         <script src="https://bernii.github.io/gauge.js/dist/gauge.min.js"></script>
         
         <script>
-            var pressure = 0
 
              // Bring up a socket.io connection
              var socket = io.connect()
@@ -53,76 +52,12 @@
                            // For this example page, we'll just push the new message
                            // to the top of a simple list
                            //submqtt()
-                           pressure = msg.payload 
-                           config.data.labels.push('this');
-                           config.data.datasets[0].data.push(0);
-                           lineChart.update();
                            submqtt2(msg.payload)
                            
                            $('#messages').prepend("<li>["+msg.topic+"] "+msg.payload+"</li>")
                            
                    })
 
-
-            $(document).ready(function () {
-            const config = {
-            type: 'line',
-            data: {
-                labels: [],
-                datasets: [{
-                    label: "Random Dataset",
-                    backgroundColor: 'rgb(255, 99, 132)',
-                    borderColor: 'rgb(255, 99, 132)',
-                    data: [],
-                    fill: false,
-                }],
-            },
-            options: {
-                responsive: true,
-                title: {
-                    display: true,
-                    text: 'Pressure'
-                },
-                tooltips: {
-                    mode: 'index',
-                    intersect: false,
-                },
-                hover: {
-                    mode: 'nearest',
-                    intersect: true
-                },
-                scales: {
-                    xAxes: [{
-                        display: true,
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Time'
-                        }
-                    }],
-                    yAxes: [{
-                        display: true,
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Value'
-                        }
-                    }]
-                }
-            }
-            };
-            const context = document.getElementById('myLineChart').getContext('2d');
-
-            const lineChart = new Chart(context, config);
-            var count = 0
-            
-            
-            
-            
-                           
-                    
-            
-            
-
-             });
         </script>
 
      
