@@ -112,7 +112,7 @@ app.get("/about",function(req,res){
 })
 
 
-app.post('/clicked', (req, res) => {
+app.post('/clicked',function(req,res){
   const click = {clickTime: new Date()};
   console.log(click);
 });
