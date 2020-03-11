@@ -1,22 +1,13 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
   <head>
-    <style>
-      body {
-        margin: 0px;
-        padding: 0px;
-      }
-    </style>
-  </head> 
-  <script src="gauge.min.js"></script>
-
-  <body data-rsssl=1>
-    <canvas id="demo"></canvas>
-    <script>
-    var gauge = new LinearGauge({
-    renderTo: '#demo',
-    // more settings here
-    })
-    </script>
+    <meta charset="utf-8">
+    <title>Node + Express + MongoDb example</title>
+  </head>
+  <body>
+    <h1>Node + Express + MongoDb example</h1>
+    <p id="counter">Loading button click data.</p>
+    <button id="myButton">Click me!</button>
   </body>
-</html>      
+  <script src="stream.js"></script>
+</html>    
