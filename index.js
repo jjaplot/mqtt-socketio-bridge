@@ -123,6 +123,17 @@ app.post('/clicked',function(req,res){
         res.write(json_data)
 })
 
+app.post('/chart-data',function(req,res){
+  res.status(200).set({
+    'Content-Type': 'text/event-stream',
+    'Cache-Control': 'no-cache',
+    'Connection': 'keep-alive'
+  })
+        
+  json_data = json.dumps({'time': 100, 'value': 100})
+        res.write(json_data)
+})
+
 http.listen(port, function() {
         console.log("listening on "+port)
 })
