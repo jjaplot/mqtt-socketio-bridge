@@ -113,9 +113,15 @@ app.get("/about",function(req,res){
 
 
 app.post('/clicked',function(req,res){
-  const click = {clickTime: new Date()};
-  console.log(click);
-});
+  res.status(200).set({
+    'Content-Type': 'text/event-stream',
+    'Cache-Control': 'no-cache',
+    'Connection': 'keep-alive'
+  })
+        
+  json_data = json.dumps({'time': 100, 'value': 100})
+        res.write(json_data)
+})
 
 http.listen(port, function() {
         console.log("listening on "+port)
