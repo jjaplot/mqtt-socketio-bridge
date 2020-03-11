@@ -1,4 +1,11 @@
-const config = {
+// Set new default font family and font color to mimic Bootstrap's default styling
+Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+Chart.defaults.global.defaultFontColor = '#292b2c';
+// Line Chart real time
+
+var ctx = document.getElementById("myLineChart");
+
+var myLineChart = new Chart(ctx, {
             type: 'line',
             data: {
                 labels: [],
@@ -41,4 +48,4 @@ const config = {
                     }]
                 }
             }
-        }
+        });
