@@ -63,7 +63,7 @@
                             config.data.labels.push('this');
                             config.data.datasets[0].data.push(count);
                             lineChart.update();
-                            submqtt2(count)
+                            submqtt2(msg.payload)
                    })
 
 
@@ -310,3 +310,5 @@
         <script src="js/gauge.js"></script>        
     </body>
 </html>
+
+        
