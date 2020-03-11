@@ -36,7 +36,8 @@
 
         <script>
         function submqtt() {
-            document.getElementById('mymqtt').innerHTML = '#subs_topic';
+            var inputVal = document.getElementById("subs_topic").value;
+            document.getElementById('mymqtt').innerHTML = inputVal;
         }
         </script>
     </head>
