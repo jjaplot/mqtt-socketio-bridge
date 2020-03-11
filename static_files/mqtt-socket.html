@@ -38,27 +38,37 @@
                     data: {
                         labels: [],
                         datasets: [{
-                            label: "Random Dataset",
                             backgroundColor: 'rgb(255, 99, 132)',
                             borderColor: 'rgb(255, 99, 132)',
                             data: [],
                             fill: false,
+                            pointRadius: 10,
+						    pointHoverRadius: 15,
                         }],
                     },
                     options: {
                         responsive: true,
                         title: {
-                            display: true,
+                            display: false,
                             text: 'Creating Real-Time Charts with Flask'
                         },
+                        elements: {
+						point: {
+							pointStyle: crossRot
+						}
+					    },
                         tooltips: {
                             mode: 'index',
                             intersect: false,
                         },
+                        legend: {
+						display: false
+					    },
                         hover: {
                             mode: 'nearest',
                             intersect: true
                         },
+                       
                         scales: {
                             xAxes: [{
                                 display: true,
@@ -249,7 +259,7 @@
                             <div class="col-xl-4">
                                 <div class="card mb-4">
                                     <div class="card-header"><i class="fas fa-chart-bar mr-1"></i>Pressure</div>
-                                    <canvas id="foo"></canvas>
+                                    <canvas id="foo"  width="100%" height="80" ></canvas>
                                 </div>
                             </div>
                         </div>
