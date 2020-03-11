@@ -113,6 +113,9 @@ app.get("/about",function(req,res){
   res.sendFile(__dirname+"/static_files/about.html")
 })
 
+app.get("/test",function(req,res){
+  res.sendFile(__dirname+"/static_files/test.html")
+})
 
 app.post('/clicked',function(req,res){
   res.status(200).set({
