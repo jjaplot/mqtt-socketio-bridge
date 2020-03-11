@@ -98,7 +98,7 @@
                             config.data.datasets[0].data.shift();
                             }
                             config.data.labels.push('this');
-                            config.data.datasets[0].data.push(10);
+                            config.data.datasets[0].data.push(pressure);
                             lineChart.update();
                            
                            $('#messages').prepend("<li>["+msg.topic+"] "+msg.payload+"</li>")
