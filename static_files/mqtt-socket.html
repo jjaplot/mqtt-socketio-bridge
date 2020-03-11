@@ -62,10 +62,9 @@
                                     <input class="form-control" name="subs_topic" id="subs_topic" type="text" />
   
                                      <div class="input-group-append">
-                                     <button class="btn btn-primary" type="button"><i class="fas fa-bars"></i></button>
+                                     <button class="btn btn-primary" type="button" onclick="$('#subs_status').text('Working...').show(); socket.emit('subscribe', { 'topic': $('#subs_topic')[0].value }); $('#subs_status').text('Ok').fadeOut(2000); return false;" ><i class="fas fa-bars"></i></button>
                                      </div>   
-                                    <input  class="button" name="subscribe" type="submit" value="subscribe" onclick="$('#subs_status').text('Working...').show(); socket.emit('subscribe', { 'topic': $('#subs_topic')[0].value }); $('#subs_status').text('Ok').fadeOut(2000); return false;" /> 
-                                
+                                    
                                 </div>
 
                                 <span id="subs_status"></span>
