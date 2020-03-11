@@ -112,6 +112,11 @@ app.get("/about",function(req,res){
 })
 
 
+app.post('/clicked', (req, res) => {
+  const click = {clickTime: new Date()};
+  console.log(click);
+});
+
 http.listen(port, function() {
         console.log("listening on "+port)
 })
