@@ -10,6 +10,7 @@ var router = express.Router()
 var path = __dirname + '/static_files/'
 var http = require('http').Server(app)
 var io = require('socket.io')(http)
+var pressure
 
 // Port that the web server should listen on
 var port = process.env.PORT || 3000;
@@ -36,6 +37,7 @@ client.on('connect', function() {
 client.on('message', function(topic, payload) {
         console.log("topic: "+topic)
         console.log("payload: "+payload)
+        pressure = payload
         // Send it to any interested sockets
         Object.keys(io.sockets.adapter.rooms).map(function(room_name) {
                 // See if this room matches the topic
@@ -153,15 +155,8 @@ function countdown(res, count) {
 }
 
 function mqcallbal(res){
-        
-        client.on('message', function(topic, payload) {
-        console.log("topic: "+topic)
-        console.log("payload: "+payload)
-        res.write(`data: ${payload}\\n\\n`)
-      
-})
-
-
+        res.write("data: " + pressure + "\n\n")
+ 
 }
 
 http.listen(port, function() {
