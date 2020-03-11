@@ -24,8 +24,18 @@ staticZones: [
 };
 var target = document.getElementById('foo'); // your canvas element
 var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
+var count = 0
 gauge.maxValue = 300; // set max gauge value
 gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0
 gauge.animationSpeed = 50; // set animation speed (32 is default value)
-gauge.set(90); // set actual value
+gauge.set(200); // set actual value
+client.on('message', function(topic, payload) {
+        count = count + 1 
+        pdata = 200-count
+        console.log("topic: "+topic)
+        console.log("payload: "+payload)
+        gauge.set(pdata); // set actual value
+
+
+})
 
