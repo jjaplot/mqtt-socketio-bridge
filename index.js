@@ -7,6 +7,7 @@ var mqtt = require('mqtt')
 var express = require('express')
 var app = express()
 var router = express.Router()
+var path = __dirname + '/static_files/'
 var http = require('http').Server(app)
 var io = require('socket.io')(http)
 
@@ -87,6 +88,15 @@ io.sockets.on('connection', function(sock) {
                 }
         })
 
+})
+
+router.use(function (req,res,next) {
+  console.log("/" + req.method)
+  next()
+})
+
+router.get("/about",function(req,res){
+  res.sendFile(path + "about.html");
 })
 
 // Serve static files from the 'static_files' folder
