@@ -140,7 +140,7 @@ app.get('/countdown', function(req, res) {
     'Cache-Control': 'no-cache',
     'Connection': 'keep-alive'
   })
-  countdown(res, 10)
+  countdown(res, 100)
 })
 
 function countdown(res, count) {
