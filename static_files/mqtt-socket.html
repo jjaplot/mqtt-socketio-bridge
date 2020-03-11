@@ -42,6 +42,76 @@
         </script>
 
         <script src="https://bernii.github.io/gauge.js/dist/gauge.min.js"></script>
+        
+        <script>
+            $(document).ready(function () {
+            const config = {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: "Random Dataset",
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: [],
+                    fill: false,
+                }],
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    text: 'Creating Real-Time Charts with Flask'
+                },
+                tooltips: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Time'
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Value'
+                        }
+                    }]
+                }
+            }
+            };
+            var socket1 = io.connect()
+
+            const context = document.getElementById('myLineChart').getContext('2d');
+
+            const lineChart = new Chart(context, config);
+
+            socket1.on('mqtt', function(msg) {
+                           console.log("message: ["+msg.topic+"] >>"+msg.payload+"<<")
+                           // For this example page, we'll just push the new message
+                           // to the top of a simple list
+                           if (config.data.labels.length === 20) {
+                            config.data.labels.shift();
+                            config.data.datasets[0].data.shift();
+                            }
+                    pdata = parseInt(msg.payload)
+                    config.data.labels.push('this');
+                    config.data.datasets[0].data.push(pdata);
+                    lineChart.update();
+            
+            })
+
+             });
+        </script>
 
      
 
@@ -219,7 +289,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
         <script src="assets/demo/chart-area-demo.js"></script>
         <script src="assets/demo/chart-bar-demo.js"></script>
-        <script src="assets/line_chart.js"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
         <script src="assets/demo/datatables-demo.js"></script>
