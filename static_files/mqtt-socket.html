@@ -67,8 +67,28 @@
                 const context = document.getElementById('myLineChart').getContext('2d');
         
                 const lineChart = new Chart(context, config);
+
+                 // Bring up a socket.io connection
+                   var socket = io.connect()
+                   socket.on('connect', function() {
+                           // Subscribe to the topic(s) we're interested in
+                           // Uncomment this line if you want to automatically subscribe to a topic
+                           //socket.emit('subscribe', { 'topic': 'mcqn/#' })
+                   })
+                   // Set up callback for whenever an MQTT message arrives
+                   socket.on('mqtt', function(msg) {
+                           console.log("message: ["+msg.topic+"] >>"+msg.payload+"<<")
+                           // For this example page, we'll just push the new message
+                           // to the top of a simple list
+                           //submqtt()
+                           submqtt2(msg.payload)
+                           
+                           $('#messages').prepend("<li>["+msg.topic+"] "+msg.payload+"</li>")
+                           
+                   })
+
         
-                var source = new EventSource('/countdown')
+                
 
               
         
@@ -98,28 +118,7 @@
 
         <script src="https://bernii.github.io/gauge.js/dist/gauge.min.js"></script>
         
-        <script>
-
-             // Bring up a socket.io connection
-             var socket = io.connect()
-                   socket.on('connect', function() {
-                           // Subscribe to the topic(s) we're interested in
-                           // Uncomment this line if you want to automatically subscribe to a topic
-                           //socket.emit('subscribe', { 'topic': 'mcqn/#' })
-                   })
-                   // Set up callback for whenever an MQTT message arrives
-                   socket.on('mqtt', function(msg) {
-                           console.log("message: ["+msg.topic+"] >>"+msg.payload+"<<")
-                           // For this example page, we'll just push the new message
-                           // to the top of a simple list
-                           //submqtt()
-                           submqtt2(msg.payload)
-                           
-                           $('#messages').prepend("<li>["+msg.topic+"] "+msg.payload+"</li>")
-                           
-                   })
-
-        </script>
+   
 
      
 
