@@ -71,7 +71,7 @@
                 responsive: true,
                 title: {
                     display: true,
-                    text: 'Creating Real-Time Charts with Flask'
+                    text: 'Pressure'
                 },
                 tooltips: {
                     mode: 'index',
@@ -99,23 +99,21 @@
                 }
             }
             };
-            var socket1 = io.connect()
-
             const context = document.getElementById('myLineChart').getContext('2d');
 
             const lineChart = new Chart(context, config);
-
+            var count = 0
             for(var start = 1; start < 10; start++) {
             setTimeout(function () {
                 if (config.data.labels.length === 20) {
+                    count = count+1
                     config.data.labels.shift();
                     config.data.datasets[0].data.shift();
                     }
-                    pdata = parseInt(msg.payload)
                     config.data.labels.push('this');
-                    config.data.datasets[0].data.push(pdata);
+                    config.data.datasets[0].data.push(count);
                     lineChart.update();
-                    submqtt(msg.payload)
+                    submqtt(count)
             }, 3000);
             }
                            
