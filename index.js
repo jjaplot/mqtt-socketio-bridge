@@ -140,7 +140,8 @@ app.get('/countdown', function(req, res) {
     'Cache-Control': 'no-cache',
     'Connection': 'keep-alive'
   })
-  countdown(res, 100)
+  //countdown(res, 100)
+  mqcallbal(res)
 })
 
 function countdown(res, count) {
@@ -149,6 +150,18 @@ function countdown(res, count) {
     setTimeout(() => countdown(res, count-1), 1000)
   else
     res.end()
+}
+
+function mqcallbal(res){
+        
+        client.on('message', function(topic, payload) {
+        console.log("topic: "+topic)
+        console.log("payload: "+payload)
+        res.write(`data: ${payload}\\n\\n`)
+      
+})
+
+
 }
 
 http.listen(port, function() {
