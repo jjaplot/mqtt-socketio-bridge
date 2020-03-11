@@ -82,6 +82,10 @@
 
          source.addEventListener('message', function(e) {
          document.getElementById('data').innerHTML = e.data
+          if (config.data.labels.length === 40) {
+                config.data.labels.shift();
+                config.data.datasets[0].data.shift();
+            }
          config.data.datasets[0].data.push(e.data);
          lineChart.update();
          }, false)
