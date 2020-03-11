@@ -30,14 +30,5 @@ gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0
 gauge.animationSpeed = 50; // set animation speed (32 is default value)
 gauge.set(200); // set actual value
 
-client.on('message', function(topic, payload) {
-        document.getElementById('data2').innerHTML = 100;
-        count = count + 1 
-        pdata = 100-count
-        console.log("topic: "+topic)
-        console.log("payload: "+payload)
-        gauge.set(pdata); // set actual value
 
-
-})
 
