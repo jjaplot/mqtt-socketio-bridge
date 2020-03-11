@@ -45,7 +45,6 @@ client.on('message', function(topic, payload) {
                         // It does.  Send the message
                         for (var clientId in io.sockets.adapter.rooms[room_name].sockets) {
                                 io.sockets.connected[clientId].emit('mqtt', { 'topic': topic, 'payload': payload.toString() })
-                                mqcallbal(payload.toString())
                         }
                 }
         })
