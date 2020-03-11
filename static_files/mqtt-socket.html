@@ -44,8 +44,30 @@
         <script src="gauge.min.js"></script>
 
         <script>
-        var gauge = new LinearGauge({
-        renderTo: '#demo'})
+        var opts = {
+        lines: 1,
+        angle: 0,
+        lineWidth: 0.2,
+        pointer: {
+            length: 0.9,
+            strokeWidth: 0,
+            color: '#ccc'
+        },
+        limitMax: 'false', 
+        percentColors: [[0.0, "#FF4B57" ], [0.40, "#EBEB3A"], [0.48, "#5ACF40"], [0.481, '#FFF'], [0.52, "#EBEB3A"], [0.60, "#FF4B57"]],
+        strokeColor: '#E0E0E0',
+        generateGradient: false
+        };
+        var target = document.getElementById('foo');
+        var gauge = new Gauge(target).setOptions(opts);
+        gauge.maxValue = 110;
+        gauge.animationSpeed = 1;
+        var s=5;
+        var v=0;
+        gauge.set(s+v);
+
+        setInterval(function(){v+=1; gauge.set(s+v)}, 200)
+        //setInterval(function(){gauge.set(s+Math.random()*100)}, 50)
         </script>
 
     </head>
@@ -168,7 +190,7 @@
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-primary text-white mb-4">
                                     <div class="card-body">Primary Card</div>
-                                    <canvas id="demo"></canvas>
+                                    <canvas id="foo"></canvas>
                                 </div>
                             </div>
                             <div class="col-xl-3 col-md-6">
