@@ -73,6 +73,10 @@ body {
   outline: 0 !important;
 }
 
+canvas#myLineChart {
+  background-color: #2C3E50  ;
+}
+
 hr {
   box-sizing: content-box;
   height: 0;
