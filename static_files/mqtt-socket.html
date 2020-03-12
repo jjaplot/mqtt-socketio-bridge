@@ -25,6 +25,7 @@
 
 
         <script>
+            var today = new Date();
              // Bring up a socket.io connection
              var socket = io.connect()
                    socket.on('connect', function() {
@@ -135,18 +136,27 @@
         </script>
 
         <script>
+            var currTime
+            var starTime
+
             function submqtt2(prinDt) 
             {
-            
+            currTime = startTime;
+            startTime= today.getMilliseconds;
+
+            freq = starTime-currTime;
+
             document.getElementById('data').innerHTML = prinDt;
             document.getElementById('press-gauge').innerHTML = prinDt;
             gauge.set(pressure)
 
             document.getElementById('Temperature').innerHTML = prinDt;
-            document.getElementById('Frequency').innerHTML = prinDt;
+            document.getElementById('Frequency').innerHTML = freq;
 
 
             }
+
+            
         </script>
 
       
@@ -253,7 +263,7 @@
                         <div class="col-xl-12">
                             <div class="card mb-4">
                                 <div class="card-header"><i class="fas fa-chart-area mr-1"></i>Real-time Pressure Data</div>
-                                <div class="card-body"><canvas id="myLineChart" width="100%" height="40"></canvas></div>
+                                <div class="card-body"><canvas id="myLineChart" width="100%" height="100%"></canvas></div>
                             </div>
                         </div>
 
@@ -280,7 +290,7 @@
                             <div class="col-xl-4 col-md-6">
                                 <div class="card bg-warning text-white mb-4">
                                     <div class="card-body">Temperature</div>
-                                    <divCard style="text-align:center" id="Temperature">0º</divCard> 
+                                    <divCard id="Temperature">0º</divCard> 
                                     <div class="text-white" style="text-align:center" id="press-temp" >Ads/sec</div>
                                 </div>
                             </div>
