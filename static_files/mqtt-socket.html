@@ -109,8 +109,7 @@
                            datpe = typeof(msg.payload)
                            pressure = parseInt(msg.payload)
                            submqtt2(pressure)
-                           updateCard(pressure)
-                           
+                           submqtt(msg.topic)
                            if (config.data.labels.length === 20) {
                             config.data.labels.shift();
                             config.data.datasets[0].data.shift();
@@ -145,22 +144,7 @@
             }
         </script>
 
-        <script>
-            function updateCard(dataP) 
-            {
-            var canvasTemp = document.getElementById('Temperature').getContext('2d');
-            canvasTemp.font = '48px arial';
-            canvasTemp.textBaseline = 'middle'
-            canvasTemp.fillStyle = "#ECF0F1";
-            canvasTemp.fillText('0', 20, 100);
-
-            var canvasFreq = document.getElementById('Frequency').getContext('2d');
-            canvasFreq.font = '48px arial';
-            canvasFreq.textBaseline = 'middle'
-            canvasFreq.fillStyle = "#ECF0F1";
-            canvasFreq.fillText('0', 20, 100);
-            }
-        </script>
+      
 
         
         
@@ -259,7 +243,7 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
-                        <h1 class="mt-2">Dashboard</h1>
+                        
                         
                         <div class="col-xl-12">
                             <div class="card mb-4">
@@ -323,6 +307,22 @@
         <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
         <script src="assets/demo/datatables-demo.js"></script>
         <script src="js/gauge.js"></script>
+
+        <script>
+       
+            var canvasTemp = document.getElementById('Temperature').getContext('2d');
+            canvasTemp.font = '20px arial';
+            canvasTemp.textBaseline = 'middle'
+            canvasTemp.fillStyle = "#ECF0F1";
+            canvasTemp.fillText('0', 20, 100);
+
+            var canvasFreq = document.getElementById('Frequency').getContext('2d');
+            canvasFreq.font = '20px arial';
+            canvasFreq.textBaseline = 'middle'
+            canvasFreq.fillStyle = "#ECF0F1";
+            canvasFreq.fillText('0', 20, 100);
+
+        </script>
                
     </body>
 </html>
