@@ -109,7 +109,7 @@
                            datpe = typeof(msg.payload)
                            pressure = parseInt(msg.payload)
                            submqtt2(pressure)
-                           submqtt(msg.topic)
+                           submqtt()
                            if (config.data.labels.length === 20) {
                             config.data.labels.shift();
                             config.data.datasets[0].data.shift();
@@ -240,8 +240,8 @@
                         <label id = "mymqtt"> 
                             -
                         </label>
-                        <h6>Data: <span id="data"></span></h6>
-                        <h6>Data2: <span id="data2"></span></h6>
+                        <div class="small" id="data" >-</div>
+
                     </div>
                 </nav>
             </div>
@@ -272,7 +272,7 @@
                             <div class="col-xl-4 col-md-6">
                                 <div class="card bg-success text-white mb-4">
                                     <div class="card-body">Advertisements frequency</div>
-                                    <divCard style="text-align:center" id="frequency">0</divCard>
+                                    <divCard style="text-align:center" id="Frequency">0</divCard>
                                     <div class="text-white" style="text-align:center" id="press-bar" >Ads/sec</div>
                                 </div>
 
