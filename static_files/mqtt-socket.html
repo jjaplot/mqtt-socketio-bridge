@@ -25,6 +25,7 @@
 
 
         <script>
+
              // Bring up a socket.io connection
              var socket = io.connect()
                    socket.on('connect', function() {
@@ -135,7 +136,12 @@
         </script>
 
         <script>
-         
+
+
+            function submqtt2(prinDt) 
+            {
+
+            
             document.getElementById('data').innerHTML = prinDt;
             document.getElementById('press-gauge').innerHTML = prinDt;
             gauge.set(pressure)
