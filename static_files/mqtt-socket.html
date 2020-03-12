@@ -109,7 +109,7 @@
                            //submqtt()
 
                            currTime = d.getTime();
-                           freq = currTime-oldTime;
+                           freq = currTime;
                            oldTime = currTime;
                            
                            datpe = typeof(msg.payload)
@@ -120,7 +120,7 @@
                             config.data.labels.shift();
                             config.data.datasets[0].data.shift();
                             }
-                            config.data.labels.push('this');
+                            config.data.labels.push(msg.topic);
                             config.data.datasets[0].data.push(pressure);
                             lineChart.update();
                            
