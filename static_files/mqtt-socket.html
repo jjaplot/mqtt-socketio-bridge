@@ -145,15 +145,17 @@
         </script>
 
         <script>
-            var canvasFreq = document.getElementById("Frequency");
-            var ctxFreq = canvas.getContext("2d");
-            ctxFreq.font = "30px Arial";
-            ctxFreq.fillText("0", 10, 50);
+            var canvasTemp = document.getElementById('Temperature').getContext('2d');
+            canvasTemp.font = '48px arial';
+            canvasTemp.textBaseline = 'middle'
+            canvasTemp.fillStyle = "#ECF0F1";
+            canvasTemp.fillText('0', 20, 100);
 
-            var canvasTemp = document.getElementById("Temperature");
-            var ctxTemp = canvas.getContext("2d");
-            ctxTemp.font = "30px Arial";
-            ctxTemp.fillText("0", 10, 50);
+            var canvasFreq = document.getElementById('Frequency').getContext('2d');
+            canvasFreq.font = '48px arial';
+            canvasFreq.textBaseline = 'middle'
+            canvasFreq.fillStyle = "#ECF0F1";
+            canvasFreq.fillText('0', 20, 100);
         </script>
 
         
