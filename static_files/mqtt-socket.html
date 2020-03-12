@@ -39,13 +39,18 @@
                 labels: [],
                 datasets: [{
                     label: "Random Dataset",
-                    backgroundColor: 'rgb(255, 99, 132)',
-                    borderColor: 'rgb(255, 99, 132)',
-                    data: [],
+                    backgroundColor: 'rgb(246, 221, 204)',
+                    borderColor: 'rgb(241, 196, 15)',
+                    data: [1,2,3],
                     fill: false,
                 }],
             },
             options: {
+            		legend: {
+            		display: false,
+            		
+        				},
+            
                 responsive: true,
                 title: {
                     display: false,
@@ -71,7 +76,7 @@
                         display: true,
                         scaleLabel: {
                             display: true,
-                            labelString: 'Value'
+                            labelString: 'Pressure'
                         }
                     }]
                 }
