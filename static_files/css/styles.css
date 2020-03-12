@@ -60,6 +60,14 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 canvas#myLineChart {
   background-color: rgb(239, 241, 243)  ;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  max-width: 1200px;
+  max-height: 400x;
+  word-wrap: break-word;
+  
 }
 
 body {
@@ -74,12 +82,18 @@ body {
 }
 
 divCard {
-  width: 300px;
-  height:150px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  max-width: 1200px;
+  max-height: 400x;
+  word-wrap: break-word;
   padding: 30px;
   margin: 0px;
   font-size: 40px;
   font-weight: bolder;
+  text-align: center;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
