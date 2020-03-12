@@ -109,6 +109,7 @@
                            datpe = typeof(msg.payload)
                            pressure = parseInt(msg.payload)
                            submqtt2(pressure)
+                           updateCard(pressure)
                            
                            if (config.data.labels.length === 20) {
                             config.data.labels.shift();
@@ -145,6 +146,8 @@
         </script>
 
         <script>
+            function updateCard(dataP) 
+            {
             var canvasTemp = document.getElementById('Temperature').getContext('2d');
             canvasTemp.font = '48px arial';
             canvasTemp.textBaseline = 'middle'
@@ -156,6 +159,7 @@
             canvasFreq.textBaseline = 'middle'
             canvasFreq.fillStyle = "#ECF0F1";
             canvasFreq.fillText('0', 20, 100);
+            }
         </script>
 
         
@@ -186,7 +190,7 @@
                                     <input class="form-control" placeholder ='MQTT subcription' name="subs_topic" id="subs_topic" type="text" />
         
                                      <div class="input-group-append">
-                                     <button class="btn btn-link btn-sm order-1 order-lg-0" type="button" onclick="$('#subs_status').text('Working...').show(); socket.emit('subscribe', { 'topic': $('#subs_topic')[0].value }); $('#subs_status').text('Ok').fadeOut(2000); return false;" ><i class="fas fa-bars"></i></button>
+                                     <button class="btn btn-link btn-sm order-1 order-lg-0" type="button" onclick="$('#subs_status').text('Working...').show(); socket.emit('subscribe', { 'topic': $('#subs_topic')[0].value }); $('#subs_status').text('Ok').fadeOut(2000); return false;" ><i class="fas fa-link"></i></button>
                                      </div>   
                                 
                                 </div>
@@ -223,30 +227,32 @@
 
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                Layouts
+                                More
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
                             ></a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
- 
-                                
-                          
-            
-        
+
                                 <a class="nav-link" href="tables.html"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Historic data Table</a>   
+                            </div>
+                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+
+                                <a class="nav-link" href="tables.html"
+                                ><div class="sb-nav-link-icon"><i class="fas fa-tools"></i></div>
+                                System architecture</a>   
                             </div>
                     </div>
 
                     
 
                     <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as:</div>
+                        <div class="small">Subscribed to:</div>
                         <label id = "mymqtt"> 
-                            Welcome to GeeksforGeeks 
+                            -
                         </label>
-                        <h3>Data: <span id="data"></span></h3>
-                        <h3>Data2: <span id="data2"></span></h3>
+                        <h6>Data: <span id="data"></span></h6>
+                        <h6>Data2: <span id="data2"></span></h6>
                     </div>
                 </nav>
             </div>
