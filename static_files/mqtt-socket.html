@@ -25,7 +25,8 @@
 
 
         <script>
-
+            var d = new Date();
+            var oldTime = 0;
              // Bring up a socket.io connection
              var socket = io.connect()
                    socket.on('connect', function() {
@@ -106,10 +107,14 @@
                            // For this example page, we'll just push the new message
                            // to the top of a simple list
                            //submqtt()
+
+                           currTime = d.getTime();
+                           freq = currTime-oldTime;
+                           oldTime = currTime;
                            
                            datpe = typeof(msg.payload)
                            pressure = parseInt(msg.payload)
-                           submqtt2(pressure)
+                           submqtt2(freq)
                            submqtt(msg.topic)
                            if (config.data.labels.length === 20) {
                             config.data.labels.shift();
