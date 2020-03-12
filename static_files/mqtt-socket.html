@@ -110,7 +110,7 @@
                            datpe = typeof(msg.payload)
                            pressure = parseInt(msg.payload)
                            submqtt2(pressure)
-                           submqtt()
+                           submqtt(msg.topic)
                            if (config.data.labels.length === 20) {
                             config.data.labels.shift();
                             config.data.datasets[0].data.shift();
@@ -128,10 +128,10 @@
                 
             });
  
-        function submqtt() 
+        function submqtt(date) 
             {
             var inputVal = document.getElementById("subs_topic").value;
-            document.getElementById('mymqtt').innerHTML = inputVal;
+            document.getElementById('mymqtt').innerHTML = date;
             }
         </script>
 
