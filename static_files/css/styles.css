@@ -65,7 +65,7 @@ canvas#myLineChart {
   flex-direction: column;
   min-width: 0;
   max-width: 1200px;
-  max-height: 400x;
+  max-height: 300x;
   word-wrap: break-word;
   
 }
@@ -87,7 +87,7 @@ divCard {
   flex-direction: column;
   min-width: 0;
   max-width: 1200px;
-  max-height: 400x;
+  max-height: 600x;
   word-wrap: break-word;
   padding: 30px;
   margin: 0px;
