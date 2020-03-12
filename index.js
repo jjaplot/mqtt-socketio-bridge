@@ -37,6 +37,7 @@ client.on('connect', function() {
 
 
 client.on('message', function(topic, payload) {
+        var d = new Date();
         console.log("topic: "+topic)
         console.log("payload: "+payload)
         pressure = payload
@@ -46,7 +47,7 @@ client.on('message', function(topic, payload) {
                 if (topicMatch(room_name, topic)) {
                         // It does.  Send the message
                         for (var clientId in io.sockets.adapter.rooms[room_name].sockets) {
-                                io.sockets.connected[clientId].emit('mqtt', { 'topic': topic, 'payload': payload.toString() })
+                                io.sockets.connected[clientId].emit('mqtt', { 'topic': d, 'payload': payload.toString() })
                               
                         }
                 }
@@ -59,6 +60,7 @@ io.sockets.on('connection', function(sock) {
 
         // ...subscribe messages
         sock.on('subscribe', function(msg) {
+                
                 console.log("Asked to subscribe to "+msg.topic)
                 if (msg.topic !== undefined) {
                         sock.join(msg.topic)
