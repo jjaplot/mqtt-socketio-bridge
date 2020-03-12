@@ -141,6 +141,11 @@
             document.getElementById('data').innerHTML = prinDt;
             document.getElementById('press-gauge').innerHTML = prinDt;
             gauge.set(pressure)
+
+            document.getElementById('Temperature').innerHTML = prinDt;
+            document.getElementById('Frequency').innerHTML = prinDt;
+
+
             }
         </script>
 
@@ -260,13 +265,14 @@
                                 <div class="card bg-primary text-white mb-4">
                                     <div class="card-body">Average Pressure</div>
                                     <canvas id="foo"></canvas>
+                                    
                                     <div class="text-white" style="text-align:center" id="press-gauge" >Pressure [bar]</div>
                                 </div>
                             </div>
                             <div class="col-xl-4 col-md-6">
                                 <div class="card bg-success text-white mb-4">
                                     <div class="card-body">Advertisements frequency</div>
-                                    <canvas id="frequency"></canvas>
+                                    <divCard style="text-align:center" id="frequency">0</divCard>
                                     <div class="text-white" style="text-align:center" id="press-bar" >Ads/sec</div>
                                 </div>
 
@@ -274,8 +280,8 @@
                             <div class="col-xl-4 col-md-6">
                                 <div class="card bg-warning text-white mb-4">
                                     <div class="card-body">Temperature</div>
-                                    <canvas id="temperature"></canvas>
-                                    <div class="text-white" style="text-align:center" id="press-bar" >Ads/sec</div>
+                                    <divCard style="text-align:center" id="Temperature">0º</divCard> 
+                                    <div class="text-white" style="text-align:center" id="press-temp" >Ads/sec</div>
                                 </div>
                             </div>
                             
@@ -308,21 +314,7 @@
         <script src="assets/demo/datatables-demo.js"></script>
         <script src="js/gauge.js"></script>
 
-        <script>
        
-            var canvasTemp = document.getElementById('Temperature').getContext('2d');
-            canvasTemp.font = '20px arial';
-            canvasTemp.textBaseline = 'middle'
-            canvasTemp.fillStyle = "#ECF0F1";
-            canvasTemp.fillText('0', 20, 100);
-
-            var canvasFreq = document.getElementById('Frequency').getContext('2d');
-            canvasFreq.font = '20px arial';
-            canvasFreq.textBaseline = 'middle'
-            canvasFreq.fillStyle = "#ECF0F1";
-            canvasFreq.fillText('0', 20, 100);
-
-        </script>
                
     </body>
 </html>
